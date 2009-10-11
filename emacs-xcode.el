@@ -30,8 +30,8 @@
 (defvar *xcode-project-root* nil)
 
 (defun xcode--project-root ()
-  (message (or *xcode-project-root*
-      (setq *xcode-project-root* (xcode--project-lookup)))))
+  (or *xcode-project-root*
+      (setq *xcode-project-root* (xcode--project-lookup))))
 
 (defun xcode--project-lookup (&optional current-directory)
   (when (null current-directory) (setq current-directory default-directory))
@@ -44,6 +44,28 @@
     (dolist (file files project-file)
       (if (> (length file) 10)
           (when (string-equal (substring file -10) ".xcodeproj") (setq project-file file))))))
+
+(defun xcode--project-command (options)
+  (concat "cd " (xcode--project-root) "; " options))
+
+(defun xcode/build-compile ()
+  (interactive)
+  (compile (xcode--project-command (xcode--build-command))))
+
+(defun xcode/build-list-sdks ()
+  (interactive)
+  (message (shell-command-to-string (xcode--project-command "xcodebuild -showsdks"))))
+
+(defun xcode--build-command (&optional target configuration sdk)
+  (let ((build-command "xcodebuild"))
+    (if (not target)
+        (setq build-command (concat build-command " -activetarget"))
+      (setq build-command (concat build-command " -target " target)))
+    (if (not configuration)
+        (setq build-command (concat build-command " -activeconfiguration"))
+      (setq build-command (concat build-command " -configuration " configuration)))
+    (when sdk (setq build-command (concat build-command " -sdk " sdk)))
+    build-command))
 
 (defun bh-compile ()
   (interactive)
