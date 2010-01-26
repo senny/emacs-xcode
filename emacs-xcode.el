@@ -18,6 +18,7 @@
 ;;; Contributors
 ;;
 ;;  - Yves Senn <yves senn * gmx ch>
+;;  - Peter Jones <pjones@pmade.com>
 ;;
 ;;; Conventions
 ;;
@@ -66,6 +67,17 @@
       (setq build-command (concat build-command " -configuration " configuration)))
     (when sdk (setq build-command (concat build-command " -sdk " sdk)))
     build-command))
+
+(defun xcode/toggle-header-and-source nil
+  "Toggle between source and header files"
+  (interactive)
+  (let ((fname buffer-file-name) oname)
+    (setq oname
+      (cond
+       ((string-match "\\.h$" fname) (replace-match ".m" nil nil fname))
+       ((string-match "\\.m$" fname) (replace-match ".h" nil nil fname))
+       (t fname)))
+    (find-file oname)))
 
 (defun bh-compile ()
   (interactive)
