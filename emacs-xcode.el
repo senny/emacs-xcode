@@ -116,3 +116,5 @@
             (if (file-exists-p dot-cpp-file)
                 (c++-mode)))))))
 (add-hook 'find-file-hook 'bh-choose-header-mode)
+
+(provide 'xcode)
