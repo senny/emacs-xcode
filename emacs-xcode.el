@@ -1,6 +1,6 @@
-;; emacs-xcode.el --- an interface to the Eclipse IDE.
+;; emacs-xcode.el --- an interface to the XCode IDE.
 ;;
-;; Copyright (C) 2009  Tassilo Horn <tassilo@member.fsf.org>
+;; Copyright (C) 2009  Yves Senn <yves.senn@gmail.com>
 ;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
