@@ -7,6 +7,7 @@ Emacs-xcode allows you to use xcode specific features inside your favourite text
 * install xcode
 * download emacs-xcode
 * add the following code to your emacs startup script
+
         (add-to-list 'load-path (expand-file-name "/path/to/emacs-xcode/"))
         (require 'xcode)
 
