@@ -1,16 +1,16 @@
-h2. Overview
+## Overview
 
 Emacs-xcode allows you to use xcode specific features inside your favourite text editor Emacs.
 
-h2. Installation
+## Installation
 
-# install xcode
-# download emacs-xcode
-# add the following code to your emacs startup script
+* install xcode
+* download emacs-xcode
+* add the following code to your emacs startup script
         (add-to-list 'load-path (expand-file-name "/path/to/emacs-xcode/"))
         (require 'xcode)
 
-h2. Contributing
+## Contributing
 
 The project is very new and is always looking for assistance.
 
@@ -20,3 +20,5 @@ The project is very new and is always looking for assistance.
 4. Push to your branch - `git push origin my_branch`
 5. Send me a pull-request for your topic branch
 6. That's it!
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/49ef112f831c38731706c754aeb6241a "githalytics.com")](http://githalytics.com/senny/emacs-xcode)
